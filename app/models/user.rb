@@ -6,7 +6,9 @@ class User < ApplicationRecord
   
   has_many :companies
   
-  validates :name, presence: true, length: {maximum: 50}
+  validates :amount, presence: true
   validates :company_name, presence: true, length: {maximum: 50}
   validates :company_zip, presence: true, length: {maximum: 5}
+  validates :name, presence: true, length: {maximum: 50}
+   
 end

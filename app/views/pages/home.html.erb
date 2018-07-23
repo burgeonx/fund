@@ -1,0 +1,271 @@
+<div class="content">
+ 
+  <div class="section section-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="container">
+            <h1>Fast funding for your business.</h1> 
+            <br><br>
+            <p>Burgeon gives you $5,000 - $50,000,000 in affordable working capital by advancing your money trapped in unpaid invoices.</p>  
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="panel panel-default home">
+            <br>
+            <div class="container">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+              <div class="form-group">
+                <%= f.select :amount, [["$5000 - $10,000", "$5000 - $10,000"], ["$10,001 - $15,000", "$10,001 - $15,000"], ["$15,001 - $20,000", "$15,001 - $20,000"], ["$20,001 - $25,000", "$20,001 - $25,000"], ["$25,001 - $30,000", "$25,001 - $30,000"], ["$30,001 - $35,000", "$30,001 - $35,000"], ["$35,001 - $50,000", "$35,001 - $50,000"], ["$50,001 - $75,000", "$50,001 - $75,000"], ["$75,001 - $150,000", "$75,001 - $150,000"], ["$150,001 - $250,000", "$150,001 - $250,000"], ["More than $250,000", "More than $250,000"]],
+                                id: "amount", prompt: "How much do you need?", class: "form-control", required: true %>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.text_field :name, :placeholder => "Your Full Name", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.text_field :company_name, :placeholder => "Company Name", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.text_field :company_zip, :placeholder => "Company Zip Code", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.email_field :email, :placeholder => "Work Email Address", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.password_field :password, :placeholder => "Create Password", class: "form-control", required: true %>
+                </div>
+              </div>  
+              <div>
+                <%= button_tag( :class => "btn btn-submit btn-block") do %>
+                  Apply Now &emsp;<i class="fas fa-arrow-right text-white arrow0"></i>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-primary float-right">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="text-center">Working capital from</h4>
+        <h3 class="text-center padded">$5,000 - $50 million</h3>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-center">Rates as low as</h4>
+        <h3 class="text-center padded">2%</h3>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-center">Approvals as fast as</h4>
+        <h3 class="text-center padded">20 minutes</h3>
+      </div>  
+    </div>
+  </div>
+
+  <div class="section section-background">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2 class="text-center">Access more capital with full flexibility</h2>
+        </div>  
+      </div>
+      <br><br><br><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 facts">
+            <div class="row">
+              <div class="col-md-3">
+                <h2 class="text-center text-primary icon-facts"><i class="fas fa-money-bill text-primary"></i></h2>  
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <h3><strong>Get larger credit limits</strong></h3>
+                </div>
+                <div class="row">
+                  <p>Get a credit line based on the strength of your customers. As your sales grow, so can your credit limit.</p>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <div class="col-md-6 facts">
+            <div class="row">
+              <div class="col-md-3">
+                <h2 class="text-center text-primary icon-facts"><i class="fas fa-hand-holding-usd"></i></h2>  
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <h3><strong>Free up your cash</strong></h3>
+                </div>
+                <div class="row">
+                  <p>Unlike a traditional loan, there are no recurring payments when your customer pays by the invoice due date.</p>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-md-6 facts">
+            <div class="row">
+              <div class="col-md-3">
+                <h2 class="text-center text-primary icon-facts"><i class="fas fa-file-invoice-dollar"></i></h2>  
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <h3><strong>Fund only what you want</strong></h3>
+                </div>
+                <div class="row">
+                  <p>You decide how many and which invoices to submit. Fund only what you need, when you need, without long-term contracts.</p>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3">
+                <h2 class="text-center text-primary icon-facts"><i class="fas fa-coins"></i></h2>  
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <h3><strong>Transparent fees</strong></h3>
+                </div>
+                <div class="row">
+                  <p>Know exactly what you’re paying with our straightforward fees. We charge a simple weekly fee due when the invoice is paid.</p>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+     
+  
+  <div class="section section-header">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="text-center">We can fund nearly every B2B business, regardless of age, size or credit.</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-4 facts">
+            <h2 class="text-primary text-center"><i class="far fa-check-square"></i></h2> 
+            <p class="text-center">From startups to Fortune 500 companies</p>
+          </div>
+          <div class="col-md-4 facts">
+            <h2 class="text-primary text-center"><i class="far fa-check-square"></i></h2> 
+            <p class="text-center">Good or bad credit</p> 
+          </div>
+          <div class="col-md-4 facts">
+            <h2 class="text-primary text-center"><i class="far fa-check-square"></i></h2>
+            <p class="text-center">All industries, except Construction</p>  
+          </div> 
+        </div>
+        <div class="row">
+          <div class="col-md-4 facts">
+            <h2 class="text-primary text-center"><i class="far fa-check-square"></i></h2> 
+            <p class="text-center">Profitable or not</p> 
+          </div>
+          <div class="col-md-4 facts">
+            <h2 class="text-primary text-center"><i class="far fa-check-square"></i></h2>  
+            <p class="text-center">Zero to decades of operating history</p>
+          </div>
+          <div class="col-md-4 facts">
+            <h2 class="text-primary text-center"><i class="far fa-check-square"></i></h2> 
+            <p class="text-center">Slow or rapid growth</p> 
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  
+  <div class="section section-primary">
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-center">$1B+</h2>
+        <h3 class="text-center padded">Funds delivered</h3>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-center">10,000+</h2>
+        <h3 class="text-center padded">Customers</h3>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-center">A+ Rating</h2>
+        <h3 class="text-center padded">Better Business Bureau</h3>
+      </div>  
+    </div>
+  </div>
+  
+  <div class="section section-background-no-margin">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="container">
+            <h1>Apply for Burgeon financing in just a few minutes.</h1> 
+            <br><br>  
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <div class="panel panel-default home">
+            <br>
+            <div class="container">
+                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+              <div class="form-group">
+                <%= f.select :amount, [["$5000 - $10,000", "$5000 - $10,000"], ["$10,001 - $15,000", "$10,001 - $15,000"], ["$15,001 - $20,000", "$15,001 - $20,000"], ["$20,001 - $25,000", "$20,001 - $25,000"], ["$25,001 - $30,000", "$25,001 - $30,000"], ["$30,001 - $35,000", "$30,001 - $35,000"], ["$35,001 - $50,000", "$35,001 - $50,000"], ["$50,001 - $75,000", "$50,001 - $75,000"], ["$75,001 - $150,000", "$75,001 - $150,000"], ["$150,001 - $250,000", "$150,001 - $250,000"], ["More than $250,000", "More than $250,000"]],
+                                id: "amount", prompt: "How much do you need?", class: "form-control", required: true %>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.text_field :name, :placeholder => "Your Full Name", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.text_field :company_name, :placeholder => "Company Name", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.text_field :company_zip, :placeholder => "Company Zip Code", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.email_field :email, :placeholder => "Work Email Address", class: "form-control", required: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-10">
+                  <%= f.password_field :password, :placeholder => "Create Password", class: "form-control", required: true %>
+                </div>
+              </div>  
+              <div>
+                <%= button_tag( :class => "btn btn-submit btn-block") do %>
+                  Apply Now &emsp;<i class="fas fa-arrow-right text-white arrow0"></i>
+                <% end %>
+              </div>
+              <% end %>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

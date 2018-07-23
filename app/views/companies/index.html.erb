@@ -1,57 +1,48 @@
-<p id="notice"><%= notice %></p>
+<div class="container content">
+  <h2>Companies</h2>
+  
+  <br>
 
-<h1>Companies</h1>
+  <div class="panel panel-default">
+    <div class="media-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Company Name</th>
+            <th>Amount</th>
+            <th>Financing time</th>
+            <th>Tax ID</th>
+            <th>Annual revenue</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Show</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Trade name</th>
-      <th>Address</th>
-      <th>Suite</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Tax</th>
-      <th>Entity type</th>
-      <th>Annual revenue</th>
-      <th>Sell to</th>
-      <th>Financing time</th>
-      <th>Amount</th>
-      <th>Website</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @companies.each do |company| %>
+            <tr>
+              <td><%= company.user.name %></td>
+              <td><%= company.name %></td>
+              <td><%= company.amount %></td>
+              <td><%= company.financing_time %></td>
+              <td><%= company.tax_id %></td>
+              <td><%= company.annual_revenue %></td>
+              <td><%= company.phone %></td>
+              <td><%= company.website %></td>
+              <td><%= link_to 'Show', company %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>  
+  
+  <br>
 
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.name %></td>
-        <td><%= company.phone %></td>
-        <td><%= company.trade_name %></td>
-        <td><%= company.address %></td>
-        <td><%= company.suite %></td>
-        <td><%= company.city %></td>
-        <td><%= company.state %></td>
-        <td><%= company.zip %></td>
-        <td><%= company.tax_id %></td>
-        <td><%= company.entity_type %></td>
-        <td><%= company.annual_revenue %></td>
-        <td><%= company.sell_to %></td>
-        <td><%= company.financing_time %></td>
-        <td><%= company.amount %></td>
-        <td><%= company.website %></td>
-        <td><%= company.user %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= link_to 'New Company', new_company_path %>
 
-<br>
+</div>
 
-<%= link_to 'New Company', new_company_path %>
