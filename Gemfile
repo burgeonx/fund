@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'pundit', '~> 2.0'
 gem 'rails', '~> 5.0.7'
 gem 'sass-rails', '~> 5.0'
+gem 'twilio-ruby', '~> 5.10', '>= 5.10.3'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do

@@ -1,43 +1,238 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container content content-user">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="container">
+          <h3><strong>Edit My Profile</strong></h3>
+          
+          <a href="/dashboard" class="underline small">My Dashboard</a>
+          
+          <br>
+           
+            <div class="row">
+              <div class="col-sm-2">
+               <br>
+                <%= image_tag avatar_url(@user), class: "avatar-large" %>&emsp;&emsp;
+              </div>
+              
+          <br>
+                           
+              <div class="col-sm-3">
+                <button class="btn btn-save" data-toggle="modal" data-target="#update-profile">Edit Profile</button>  
+              </div>            
+            </div>
+            
+          <hr>
+            
+            <div class="row">
+              <div class="col-sm-8">
+                <h4>Change my Password</h4>
+                <br>
+                <small>Update the password you use to login to your Burgeon account.</small>
+              </div>
+                          
+          <br>
+                           
+              <div class="col-sm-4">
+                <button class="btn btn-save" data-toggle="modal" data-target="#update-password">Change Password</button>  
+              </div>            
+            </div>
+            
+          <hr>
+            <% if current_user.phone_number.blank? %>
+            <div class="row">
+              <div class="col-sm-8">
+                <h4>Add Phone Number</h4>
+                <br>
+                <small>Add your phone number to secure your account.</small>
+              </div>
+                          
+          <br>
+                           
+              <div class="col-sm-4">
+                <button class="btn btn-save" data-toggle="modal" data-target="#update-phone">Add Phone Number</button>   
+              </div>            
+            </div>
+            
+          <hr>
+            <% elsif current_user.verified_phone == false %>
+            <div class="row">
+              <div class="col-sm-8">
+                <h4>Your Phone Number</h4>
+                <br>
+                <small><%= current_user.phone_number %></small>
+              </div>
+                          
+          <br>
+                           
+              <div class="col-sm-4">
+                <button class="btn btn-save" data-toggle="modal" data-target="#verify-phone">Verify Phone Number</button>  
+              </div>            
+            </div>
+          <hr>
+            <% else %>
+              <div class="row">
+              <div class="col-sm-8">
+                <h4>Your Phone Number</h4>
+                <br>
+                <small><%= current_user.phone_number %></small>
+              </div>
+                          
+          <br>
+                           
+              <div class="col-sm-4">
+                <p class=" no-bullet">Phone Number Verified<span class="text-primary">&emsp;<i class="far fa-check-circle"></i></span></p>  
+              </div>            
+            </div>
+            
+            <br>
+            
+            <% end %> 
+          
+          <br>
+        
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+<!-- MODAL TO EDIT PROFILE -->
+<div id="update-profile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit My Profile</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, placeholder: "Email Address", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, placeholder: "Your Full Name", class: "form-control" %>
+          </div>
+          
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+          </div>
+          
+          <br>
+        <% end %> 
+      </div>
+
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+<!-- MODAL TO UPDATE PASSWORD -->
+<div id="update-password" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update My Password</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+            
+            <div class="form-group">
+              <%= f.label :New_Password %><br />
+              <%= f.password_field :password, autocomplete: "off", placeholder: "New Password (leave blank if you don't want to change it)", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :New_Password_Confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Current_Password %><br />
+              <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Password (we need your current password to confirm your changes)", class: "form-control" %>
+            </div>
+          
+          <br>
+          
+          <div class="actions">
+            <%= f.submit "Update", :class => "btn btn-primary" %>
+          </div>
+          <br>
+        <% end %> 
+      </div>
+
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+
+<!-- MODAL FOR PHONE NUMBER -->
+<div id="update-phone" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Phone Number</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: update_phone_number_user_path(current_user) do |f| %>
+            <div class="form-group">
+              <%= f.text_field :phone_number, class: "form-control", placeholder: "Your Phone Number" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "Save", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+<!-- MODAL FOR VERIFICATION -->
+<div id="verify-phone" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Verification Code</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for current_user, url: verify_phone_number_user_path(current_user), method: :post do |f| %>
+            <div class="form-group">
+              <%= f.text_field :pin, class: "form-control", placeholder: "Your Pin", value: "" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "Verify", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
   </div>
-<% end %>
+</div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
