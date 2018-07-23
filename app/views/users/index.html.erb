@@ -1,0 +1,37 @@
+<div class="container content">
+  <h3><strong>Users (<%= @users.count %>)</strong></h3>
+  <br>
+  
+  <div class="panel panel-default">
+    <div class="media-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company Name</th>
+            <th>Amount Requested</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Joined</th>
+            <th>Show</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.company_name %></td>
+              <td><%= user.amount %></td>
+              <td><%= user.phone_number %></td>
+              <td><%= user.email %></td>
+              <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+              <td><%= link_to 'Show', user %></td>
+              <td colspan="3"></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>  
+    </div>
+  </div>
+</div>
