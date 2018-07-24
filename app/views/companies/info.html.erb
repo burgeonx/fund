@@ -1,0 +1,58 @@
+<div class="container content">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'company_menu' %>
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">Company Info</div>
+        <div class="panel-body">
+          <div class="container">
+            <%= form_for @company do |f| %>
+             
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>Company Name</label>
+                    <%= f.text_field :name, placeholder: "Legal Company Name", class: "form-control", required: true %>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>Trade Name</label>
+                    <%= f.text_field :trade_name, placeholder: "Optional", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>Tax ID/EIN or SSN</label>
+                    <%= f.text_field :tax_id, placeholder: "1234567", class: "form-control", required: true %>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-4 select">
+                  <div class="form-group">
+                    <label>Entity Type</label>
+                    <%= f.select :entity_type, [["Sole Proprietorship", "Sole Proprietorship"], ["Partnership", "Partnership"], ["S Corporation", "S Corporation"], ["C Corporation", "C Corporation"], ["Limited Liability Company (LLC)", "Limited Liability Company (LLC)"]], id: "entity_type", prompt: "Select...", class: "form-control", required: true %>
+
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>Annual Revenue</label>
+                      <%= f.text_field :annual_revenue, placeholder: "1,000,000", class: "form-control", required: true %>
+                  </div>
+                </div>
+              </div>
+              
+              <%= f.submit "Save", class: "btn btn-primary" %>
+              
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -133,6 +133,11 @@ td {
   padding-bottom: 20px;
 }
 
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
 
 /* BUTTON */
 .btn.btn-submit {
@@ -369,7 +374,6 @@ select {
   height: 3.5em;
   font-size: 14px;
   border: 3px solid $border;
-  padding: 0.5em;
   padding-left: 10px !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
@@ -377,8 +381,6 @@ select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  padding: 0.5em 0.5em;
-  margin: .25em 0 .25em 0;
   background-color: $white;
   appearance: none;
   -moz-appearance: none; /* Firefox */
@@ -452,7 +454,6 @@ input[type="checkbox"]:checked:before {
 
 /* SIDEBAR */
 .sidebar-list {
-  padding: 0;
   list-style: none;
 }
 
@@ -474,6 +475,12 @@ input[type="checkbox"]:checked:before {
   color: $dark;
   font-weight: bold;
   text-decoration: none;
+}
+
+#sidebar {
+  li {
+     padding-bottom: 10px; 
+  }
 }
 
 
@@ -543,7 +550,7 @@ input[type="checkbox"]:checked:before {
 
 /* Forms */
 .select:before {
-  top: 53px;
+  top: 45px;
   right: 30px;
   transform: scale(0.94, 0.52);
 }

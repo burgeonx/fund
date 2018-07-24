@@ -34,7 +34,13 @@ Rails.application.routes.draw do
 
   get 'terms' , to: 'pages#terms'
 
-  resources :companies
+  resources :companies, except: [:edit] do
+    member do
+      get 'funding'
+      get 'info'
+      get 'contact'
+    end
+  end
   
   resources :users, only: [:index, :show] do
     member do

@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, except: [:index, :new, :create]
   before_action :authenticate_user!
 
   # GET /companies
@@ -26,30 +26,36 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = current_user.companies.build(company_params)
-
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
-      else
-        format.html { render :new }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    
+    if @company.save
+      redirect_to funding_company_path(@company), notice: "Saved."
+    else
+      flash[:alert] = "Oops, something went wrong."
+      render :new
     end
+  end
+  
+  def funding
+  end
+
+  def info
+  end
+
+  def contact
   end
 
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
-    respond_to do |format|
-      if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { render :show, status: :ok, location: @company }
-      else
-        format.html { render :edit }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    new_params = company_params
+    new_params = company_params.merge(active: true) if is_ready_company
+    
+    if @company.update(company_params)
+      flash[:notice] = "Your changes were saved."
+    else
+      flash[:alert] = "Oops, something went wrong."
     end
+    redirect_back(fallback_location: request.referer)
   end
 
   # DELETE /companies/1
@@ -66,6 +72,10 @@ class CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+    end
+  
+    def is_ready_company
+      !@company.active && !@company.amount.blank? && !@company.financing_time.blank? && !@company.tax_id.blank? && !@company.entity_type.blank? && !@company.annual_revenue.blank? && !@company.address.blank? && !@company.city.blank? && !@company.state.blank? && !@company.zip.blank? && !@company.phone.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
