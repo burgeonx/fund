@@ -8,8 +8,6 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Company Name</th>
-            <th>Amount Requested</th>
             <th>Phone Number</th>
             <th>Email</th>
             <th>Joined</th>
@@ -21,13 +19,11 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= user.name %></td>
-              <td><%= user.company_name %></td>
-              <td><%= user.amount %></td>
               <td><%= user.phone_number %></td>
               <td><%= user.email %></td>
               <td><%= user.created_at.strftime("%b %d, %Y") %></td>
-              <td><%= link_to 'Show', user %></td>
-              <td colspan="3"></td>
+              <td><%= link_to 'User Page', user %></td>
+              <td colspan="3"></td>  
             </tr>
           <% end %>
         </tbody>

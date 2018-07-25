@@ -47,9 +47,6 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
-    new_params = company_params
-    new_params = company_params.merge(active: true) if is_ready_company
-    
     if @company.update(company_params)
       flash[:notice] = "Your changes were saved."
     else

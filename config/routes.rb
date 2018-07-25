@@ -3,8 +3,10 @@ Rails.application.routes.draw do
              path: '',
              path_names: {sign_in: 'login', sign_out: 'logout', edit: 'edit', sign_up: 'register'},
              controllers: {registrations: 'registrations'}
-  
+
   root "pages#home"
+  
+  get 'dashboard' => 'dashboards#index'
   
   get 'about' , to: 'pages#about'
   

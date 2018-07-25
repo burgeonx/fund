@@ -37,15 +37,6 @@
         <% end %>
     <% end %>
   </nav> 
-  
-  <hr>
-  
-  <% is_ready = !@company.active && !@company.amount.blank? && !@company.financing_time.blank? && !@company.tax_id.blank? && !@company.entity_type.blank? && !@company.annual_revenue.blank? && !@company.address.blank? && !@company.city.blank? && !@company.state.blank? && !@company.zip.blank? && !@company.phone.blank? %>
-
-  <%= form_for @company do |f| %>
-    <%= f.hidden_field :active, value: true %>
-    <%= f.submit "Submit", id: "publish_button", class: "btn btn-save btn-block", disabled: !is_ready %>
-  <% end %> 
 </section>
  
 <br>
