@@ -5,10 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pundit', '~> 2.0'

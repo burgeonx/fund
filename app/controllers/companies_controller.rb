@@ -70,13 +70,9 @@ class CompaniesController < ApplicationController
     def set_company
       @company = Company.find(params[:id])
     end
-  
-    def is_ready_company
-      !@company.active && !@company.amount.blank? && !@company.financing_time.blank? && !@company.tax_id.blank? && !@company.entity_type.blank? && !@company.annual_revenue.blank? && !@company.address.blank? && !@company.city.blank? && !@company.state.blank? && !@company.zip.blank? && !@company.phone.blank?
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :phone, :trade_name, :address, :suite, :city, :state, :zip, :tax_id, :entity_type, :annual_revenue, :sell_to, :financing_time, :amount, :website)
+      params.require(:company).permit(:name, :phone, :trade_name, :address, :suite, :city, :state, :zip, :tax_id, :entity_type, :annual_revenue, :sell_to, :financing_time, :amount, :website, :active)
     end
 end

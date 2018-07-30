@@ -1,9 +1,26 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users,
              path: '',
              path_names: {sign_in: 'login', sign_out: 'logout', edit: 'edit', sign_up: 'register'},
              controllers: {registrations: 'registrations'}
 
+  resources :companies, except: [:edit] do
+    member do
+      get 'funding'
+      get 'info'
+      get 'contact'
+    end
+  end
+  
+  resources :users, only: [:index, :show] do
+    member do
+      post '/verify_phone_number' => 'users#verify_phone_number'
+      patch '/update_phone_number' => 'users#update_phone_number'
+    end
+  end
+  
   root "pages#home"
   
   get 'dashboard' => 'dashboards#index'
@@ -34,20 +51,5 @@ Rails.application.routes.draw do
   
   get 'support' , to: 'pages#support'
 
-  get 'terms' , to: 'pages#terms'
-
-  resources :companies, except: [:edit] do
-    member do
-      get 'funding'
-      get 'info'
-      get 'contact'
-    end
-  end
-  
-  resources :users, only: [:index, :show] do
-    member do
-      post '/verify_phone_number' => 'users#verify_phone_number'
-      patch '/update_phone_number' => 'users#update_phone_number'
-    end
-  end
+  get 'terms' , to: 'pages#terms' 
 end
