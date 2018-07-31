@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  
   def show
-    @user = User.find(params[:id])
-    @companies = current_user.companies
+    @companies = @user.companies
     authorize @user
   end
   
   def index
     @users = User.all
-     authorize @users
+    authorize @users
   end
   
   def update_phone_number
@@ -36,6 +37,10 @@ class UsersController < ApplicationController
   end
   
   private
+  
+    def set_user
+      @user = User.find(params[:id])
+    end
   
     def user_params
       params.require(:user).permit(:phone_number, :pin)

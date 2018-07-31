@@ -1,1 +1,48 @@
-<%= render 'shared/user_info' %>
+<div class="container content content-user">
+  <div class="row">
+    <div class="col-md-3 user">
+      <center><%= image_tag avatar_url(@user), class: "avatar-large" %></center>
+      <br>
+      <h5 class="text-center"><%= @user.name %></h5>
+    </div> 
+    <div class="col-md-9">
+      <% if @user.companies.count == 0 %>
+      <% else %>
+        <h3><strong>Companies</strong></h3>
+        <br>
+        <div class="panel panel-default">
+          <div class="media-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Company Name</th>
+                  <th>Application Date</th>
+                  <th>Amount Requested</th>
+                  <th>Needs Funds</th>
+                  <th>Annual Revenue</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @companies.each do |company| %>
+                  <tr>
+                    <% if !company.name.blank? %>
+                      <td><%= link_to company.name, company %></td>
+                    <% else %>
+                      <td></td>  
+                    <% end %>
+                    <td><%= company.created_at.strftime("%b %d, %Y") %></td>
+                    <td><%= company.amount %></td>
+                    <td><%= company.financing_time %></td>
+                    <td><%= company.annual_revenue %></td>
+                    <td colspan="3"></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>  
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
