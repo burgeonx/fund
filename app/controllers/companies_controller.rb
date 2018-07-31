@@ -6,11 +6,13 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+    authorize @companies
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    authorize @company
   end
 
   # GET /companies/new

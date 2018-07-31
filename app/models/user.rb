@@ -6,6 +6,18 @@ class User < ApplicationRecord
   
   has_many :companies
   
+  def admin?
+    role == "admin"
+  end
+  
+  def regular?
+    role == "regular"
+  end
+  
+  def guest?
+    role == "guest"
+  end
+  
   validates :amount, presence: true
   validates :company_name, presence: true, length: {maximum: 50}
   validates :company_zip, presence: true, length: {maximum: 5}

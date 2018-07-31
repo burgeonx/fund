@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @companies = current_user.companies
+    authorize @user
   end
   
   def index
     @users = User.all
+     authorize @users
   end
   
   def update_phone_number
