@@ -1,4 +1,10 @@
-<h1>Editing Company</h1>
+<% if current_user == @company.user %>
+  <h1>Editing Company</h1>
 
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', companies_path %>
+  <%= link_to 'Show', @company %> |
+  <%= link_to 'Back', companies_path %>
+<% else %>
+  <div class="container content">
+    <h3 class="text-center">You don't have permission to view this.</h3>
+  </div>
+<% end %>
