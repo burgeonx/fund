@@ -7,6 +7,10 @@ class CompanyPolicy < ApplicationPolicy
     user.present? && user == company.user || user.present? && user.admin?
   end
   
+  def edit?
+    user.present? && user == company.user || user.present? && user.admin?
+  end
+  
   private
   
     def company
